@@ -22,9 +22,9 @@
       jneqz error     ; Si r13 no es 0, hay error
 
 ; Bucle anidado de prueba
-      li r14, 3       ; Contador externo
+      li r14, 5       ; Contador externo
 outer_loop:
-      li r15, 2       ; Contador interno
+      li r15, 10       ; Contador interno
 inner_loop:
       sub r15, r15, r9 ; r15 -= 1
       jneqzr r15, inner_loop ; Repite mientras r15 != 0
@@ -35,7 +35,7 @@ inner_loop:
       j success
 
 error:
-      li r16, -1      ; Indicar error
+      li r0, -1      ; Indicar error
       j error         ; Bucle infinito en caso de fallo
 
 success:

@@ -110,7 +110,6 @@ void TranslationMap::Translate(const std::string& line,
   while (token.back() == ':') {
     output << token << " ";
     if (!(iss >> token)) {
-      output << "\n";
       return;
     }
     if (token[0] == ';') return;  // Skip if commented
