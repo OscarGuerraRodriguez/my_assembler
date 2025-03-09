@@ -20,11 +20,11 @@
 
 // Nemónico de cada instrucción, no puede haber dos iguales
 
-const char* mnemonics[] = {"alu", "li", "jeqz", "jneqz"};
+const char* mnemonics[] = {"id", "not", "add", "sub", "and", "or", "nega", "negb", "li", "j", "jeqz", "jneqz"};
 
 // Opcode de cada instrucción
 
-const char* opcodes[] = {"0000", "0001", ..., "111011"};
+const char* opcodes[] = {"0000", "0001", "0010", "0011", "0100", "0101", "0110", "0111", "1000", "110000", "110011", "110010"};
 
 // Operandos
 
@@ -34,7 +34,7 @@ const char* opcodes[] = {"0000", "0001", ..., "111011"};
 // Codificación de los operandos de cada instrucción
 // C: cte datos, D: cte de dirección de código, R: campo de registro
 
-const char* operands[] = {"RRR", "RC", ..., "D"};
+const char* operands[] = {"RRR", "RRR", "RRR", "RRR", "RRR", "RRR", "RRR", "RRR", "RC", "D", "D", "D"};
 
 // Tamaños de operando
 // Tamaño en bits de una constante C (o dirección de datos si así se considera)
@@ -49,14 +49,18 @@ const char* operands[] = {"RRR", "RC", ..., "D"};
 
 // Posiciones del bit más significativo de cada operando en la instrucción
 // codificada 0 significa no usado
-const int posoper[NUMINS][MAXNUMOPER] = {{11, 3, 0}, {11, 3, 0}, ... {0, 0, 0}};
+const int posoper[NUMINS][MAXNUMOPER] = {{3, 11, 7}, {3, 11, 7}, {3, 11, 7}, {3, 11, 7}, {3, 11, 7}, {3, 11, 7}, {3, 11, 7}, {3, 11, 7}, {3, 11}, {9}, {9}, {9}};
 
 const TranslationMap translation_map{R"(
+ident 2:
+  id $0, $1, r0
+neg 2:
+  nega $0, $1, r0
 jeqzr 2:
-  ident $0
+  id $0, $0, r0
   jeqz $1
 jneqzr 2:
-  ident $0
+  id $0, $0, r0
   jneqz $1
 )"};
 
