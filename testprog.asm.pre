@@ -1,0 +1,33 @@
+li r1, 10       
+li r2, -5       
+add r3, r1, r2  
+sub r4, r3, r1  
+nega r4, r4, r0
+sub r5, r4, r3  
+jneqz error     
+li r6, 3        
+li r7, 5        
+and r8, r6, r7  
+li r9, 1        
+sub r10, r8, r9 
+jneqz error     
+or r11, r6, r7  
+li r12, 7       
+sub r13, r11, r12 
+jneqz error     
+li r14, 3       
+outer_loop: 
+li r15, 2       
+inner_loop: 
+sub r15, r15, r9 
+id r15, r15, r0
+jneqz inner_loop
+sub r14, r14, r9 
+id r14, r14, r0
+jneqz outer_loop
+j success
+error: 
+li r16, -1      
+j error         
+success: 
+j success       

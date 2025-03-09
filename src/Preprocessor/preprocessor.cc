@@ -109,10 +109,13 @@ void TranslationMap::Translate(const std::string& line,
 
   while (token.back() == ':') {
     output << token << " ";
-    if (!(iss >> token)) break;
+    if (!(iss >> token)) {
+      output << "\n";
+      return;
+    }
     if (token[0] == ';') return;  // Skip if commented
   }
-  if (token.empty() || token.back() == ',') {
+  if (token.back() == ',') {
     output << "\n";
     return;
   }
