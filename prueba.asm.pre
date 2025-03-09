@@ -1,0 +1,12 @@
+movi 3, r2
+add  r1, r2, r3
+pepe: sub  r3, r1, r7
+popo: equ  0xffff
+popi: equ  -1
+popu: equ  3
+mnem1 popo, 23
+mnem2 r15, 0
+caca: caca:
+movi 3, R2
+jz   caca
+pope: jmp  pope

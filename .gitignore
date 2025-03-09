@@ -1,0 +1,14 @@
+# Ignore object files and compiled binaries
+*.o
+my_assembler
+
+# Ignore editor and system files
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Ignore build artifacts
+*.out
+*.exe
+*.log
